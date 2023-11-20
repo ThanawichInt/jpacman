@@ -20,17 +20,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(MockitoExtension.class)
 public class MapParserTest {
     /**
-     * This Mock is used to create Board Object
+     * This Mock is used to create Board Object.
      */
     @Mock
     private BoardFactory boardFactory;
     /**
-     * This Mock is used to create Level Object
+     * This Mock is used to create Level Object.
      */
     @Mock
     private LevelFactory levelFactory;
     /**
-     * This Mock is used for representing the behavior of a ghost charactor in Pacman
+     * This Mock is used for representing the behavior of a ghost charactor in Pacman.
      */
     @Mock
     private Blinky blinky;
@@ -51,8 +51,9 @@ public class MapParserTest {
         map.add("############");
         mapParser.parseMap(map);
 
+        int GroundIndex = 10;
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(boardFactory, Mockito.times(10)).createGround();
+        Mockito.verify(boardFactory, Mockito.times(GroundIndex)).createGround();
     }
 
     /**
