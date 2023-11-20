@@ -1,5 +1,6 @@
 package nl.tudelft.jpacman.level;
 
+import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.npc.ghost.Blinky;
@@ -20,10 +21,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 @ExtendWith(MockitoExtension.class)
 public class MapParserTest {
+    /**
+     * This Mock is used to create Board Object
+     */
     @Mock
     private BoardFactory boardFactory;
+    /**
+     * This Mock is used to create Level Object
+     */
     @Mock
     private LevelFactory levelFactory;
+    /**
+     * This Mock is used for representing the behavior of a ghost charactor in Pacman
+     */
     @Mock
     private Blinky blinky;
 
