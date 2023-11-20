@@ -51,9 +51,9 @@ public class MapParserTest {
         map.add("############");
         mapParser.parseMap(map);
 
-        final int GROUND_INDEX_DEFAULT = 10;
+        final int groundIndex = 10;
         Mockito.verify(levelFactory, Mockito.times(1)).createGhost();
-        Mockito.verify(boardFactory, Mockito.times(GROUND_INDEX_DEFAULT)).createGround();
+        Mockito.verify(boardFactory, Mockito.times(groundIndex)).createGround();
     }
 
     /**
