@@ -4,6 +4,7 @@ import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.npc.ghost.Blinky;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -46,5 +47,27 @@ public class MapParserTest {
         Mockito.verify(boardFactory, Mockito.times(10)).createGround();
     }
 
-
+    /**
+     * Test for the parseMap method (bad map).
+     */
+    @Test
+    public void testParseMapWrong1() {
+        Exception thrown = Assertions.assertThrows(Exception.class, () -> {
+            MockitoAnnotations.initMocks(this);
+            assertNotNull(boardFactory);
+            assertNotNull(levelFactory);
+            MapParser mapParser = new MapParser(levelFactory, boardFactory);
+            ArrayList<String> map = new ArrayList<>();
+        /*
+        Create a map with inconsistent size between
+        each row or contain invalid characters
+        */
+        //Missing #
+            map.add("############");
+            map.add("#P        G#");
+            map.add("#########");
+            mapParser.parseMap(map);
+        });
+        Assertions.assertEquals("Input text lines are not of equal width.", thrown.getMessage());
+    }
 }
